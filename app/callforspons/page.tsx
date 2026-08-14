@@ -1,11 +1,13 @@
 "use client";
-import React from 'react'
+import React, { useState } from 'react'
 import OtherBackground from '../../components/OtherBackground'
 import FeesPage from '../../components/Registration'
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Download, FileText, Maximize2, X } from "lucide-react";
 
 function page() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
      <div className="min-h-screen py-18 relative">
       <OtherBackground/>
@@ -150,108 +152,217 @@ function page() {
   *18% GST is applicable on all sponsorship categories.
 </p>
 
-  {/* Payment Details */}
- 
-    
-    {/* Payment Details */}
+  {/* Payment Details & Sponsorship PDF Side-by-Side */}
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch max-w-7xl mx-auto">
+    {/* Left Column: Payment Details */}
     <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="w-full max-w-2xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-purple-200"
-          >
-            <div className="bg-gradient-to-r from-purple-800 to-purple-700 p-5">
-              <h2 className="text-2xl font-bold text-white text-center">
-                Payment Details
-              </h2>
-              <p className="text-purple-200 text-center text-sm mt-1">
-                Bank Transfer via UPI / NEFT / IMPS
-              </p>
-            </div>
-            <div className="p-5 space-y-4">
-              <div className="space-y-2">
-                <div className="flex justify-between items-center border-b border-purple-200 pb-2">
-                  <span className="font-semibold text-purple-900">
-                    Account Number:
-                  </span>
-                  <span className="text-purple-700 font-mono font-bold">
-                    36734418111
-                  </span>
-                </div>
-                <div className="flex justify-between items-center border-b border-purple-200 pb-2">
-                  <span className="font-semibold text-purple-900">
-                    Account Name:
-                  </span>
-                  <span className="text-purple-700">
-                    Conference, NIT Rourkela
-                  </span>
-                </div>
-                <div className="flex justify-between items-center border-b border-purple-200 pb-2">
-                  <span className="font-semibold text-purple-900">
-                    IFSC Code:
-                  </span>
-                  <span className="text-purple-700 font-mono">SBIN0002109</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-purple-200 pb-2">
-                  <span className="font-semibold text-purple-900">
-                    Bank & Branch:
-                  </span>
-                  <span className="text-purple-700">
-                    SBI, NIT Campus, Rourkela
-                  </span>
-                </div>
-                <div className="flex justify-between items-center border-b border-purple-200 pb-2">
-                  <span className="font-semibold text-purple-900">
-                    Merchant Name:
-                  </span>
-                  <span className="text-purple-700">
-                    CONFERENCE NIT ROURKELA
-                  </span>
-                </div>
-                <div className="flex justify-between items-center pt-1">
-                  <span className="font-semibold text-purple-900">UPI ID:</span>
-                  <span className="text-purple-700 font-mono font-bold">
-                    2804180418@sbi
-                  </span>
-                </div>
-              </div>
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+      className="w-full bg-white rounded-2xl shadow-xl overflow-hidden border border-purple-200 flex flex-col justify-between"
+    >
+      <div className="bg-gradient-to-r from-purple-800 to-purple-700 p-5">
+        <h2 className="text-2xl font-bold text-white text-center">
+          Payment Details
+        </h2>
+        <p className="text-purple-200 text-center text-sm mt-1">
+          Bank Transfer via UPI / NEFT / IMPS
+        </p>
+      </div>
+      <div className="p-5 space-y-4 flex-1 flex flex-col justify-between">
+        <div className="space-y-2">
+          <div className="flex justify-between items-center border-b border-purple-200 pb-2">
+            <span className="font-semibold text-purple-900">
+              Account Number:
+            </span>
+            <span className="text-purple-700 font-mono font-bold">
+              36734418111
+            </span>
+          </div>
+          <div className="flex justify-between items-center border-b border-purple-200 pb-2">
+            <span className="font-semibold text-purple-900">
+              Account Name:
+            </span>
+            <span className="text-purple-700">
+              Conference, NIT Rourkela
+            </span>
+          </div>
+          <div className="flex justify-between items-center border-b border-purple-200 pb-2">
+            <span className="font-semibold text-purple-900">
+              IFSC Code:
+            </span>
+            <span className="text-purple-700 font-mono">SBIN0002109</span>
+          </div>
+          <div className="flex justify-between items-center border-b border-purple-200 pb-2">
+            <span className="font-semibold text-purple-900">
+              Bank & Branch:
+            </span>
+            <span className="text-purple-700">
+              SBI, NIT Campus, Rourkela
+            </span>
+          </div>
+          <div className="flex justify-between items-center border-b border-purple-200 pb-2">
+            <span className="font-semibold text-purple-900">
+              Merchant Name:
+            </span>
+            <span className="text-purple-700">
+              CONFERENCE NIT ROURKELA
+            </span>
+          </div>
+          <div className="flex justify-between items-center pt-1">
+            <span className="font-semibold text-purple-900">UPI ID:</span>
+            <span className="text-purple-700 font-mono font-bold">
+              2804180418@sbi
+            </span>
+          </div>
+        </div>
 
-              {/* QR Code Placeholder - Replace with actual QR image */}
-              <div className="mt-4 pt-4 border-t border-purple-200">
-                <p className="text-purple-800 text-sm font-medium text-center mb-3">
-                  Scan QR Code for UPI Payment
-                </p>
-                <div className="flex justify-center">
-                  <div className="relative w-36 h-36 bg-purple-100 rounded-xl border-2 border-purple-300 flex items-center justify-center">
-                    {/* Replace the src below with your actual QR image path */}
-                    <Image
-                      src="/qr-placeholder.png"
-                      alt="UPI QR Code"
-                      width={128}
-                      height={128}
-                      className="object-contain"
-                      onError={(e) => {
-                        // Fallback if image not found - show a placeholder box
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = "none";
-                        const parent = target.parentElement;
-                        if (parent) {
-                          const fallback = document.createElement("div");
-                          fallback.className =
-                            "text-purple-600 text-xs text-center p-2";
-                          fallback.innerText = "QR Code\nPlaceholder";
-                          parent.appendChild(fallback);
-                        }
-                      }}
-                    />
-                    {/* If you don't have an image yet, uncomment below line and comment Image */}
-                    {/* <div className="text-purple-600 text-xs text-center p-2">QR Code Placeholder<br />Add your QR image</div> */}
+        {/* QR Code Placeholder */}
+        <div className="mt-4 pt-4 border-t border-purple-200">
+          <p className="text-purple-800 text-sm font-medium text-center mb-3">
+            Scan QR Code for UPI Payment
+          </p>
+          <div className="flex justify-center">
+            <div className="relative w-36 h-36 bg-purple-100 rounded-xl border-2 border-purple-300 flex items-center justify-center">
+              <Image
+                src="/qr-placeholder.png"
+                alt="UPI QR Code"
+                width={128}
+                height={128}
+                className="object-contain"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = "none";
+                  const parent = target.parentElement;
+                  if (parent) {
+                    const fallback = document.createElement("div");
+                    fallback.className =
+                      "text-purple-600 text-xs text-center p-2";
+                    fallback.innerText = "QR Code\nPlaceholder";
+                    parent.appendChild(fallback);
+                  }
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+
+    {/* Right Column: Sponsorship PDF Document */}
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: 0.3 }}
+      className="w-full bg-white rounded-2xl shadow-xl overflow-hidden border border-purple-200 flex flex-col justify-between"
+    >
+      <div className="bg-gradient-to-r from-purple-800 to-purple-700 p-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="flex items-center gap-3 text-white">
+          <FileText className="w-6 h-6 shrink-0" />
+          <h2 className="text-xl md:text-2xl font-bold">
+            Sponsorship Brochure
+          </h2>
+        </div>
+        <div className="flex items-center gap-2">
+          <a
+            href="/Sponsorship-CMDAYS-2026.pdf"
+            download="Sponsorship-CMDAYS-2026.pdf"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-white text-xs font-semibold transition-colors"
+          >
+            <Download className="w-3.5 h-3.5" />
+            Download
+          </a>
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-white text-xs font-semibold transition-colors"
+          >
+            <Maximize2 className="w-3.5 h-3.5" />
+            Expand
+          </button>
+        </div>
+      </div>
+
+      <div className="p-4 flex-1 flex flex-col">
+        {/* PDF Preview Frame */}
+        <div className="flex-1 min-h-[380px] rounded-xl overflow-hidden border border-purple-200 shadow-inner bg-slate-900">
+          <iframe
+            src="/Sponsorship-CMDAYS-2026.pdf#toolbar=0&navpanes=0"
+            className="w-full h-full min-h-[380px]"
+            title="Sponsorship Brochure PDF Preview"
+            style={{ border: "none" }}
+          >
+            <div className="p-6 text-center text-white">
+              <p className="mb-4">Your browser does not support inline PDF previews.</p>
+              <a
+                href="/Sponsorship-CMDAYS-2026.pdf"
+                download="Sponsorship-CMDAYS-2026.pdf"
+                className="px-4 py-2 bg-purple-600 text-white rounded-lg font-semibold underline"
+              >
+                Click here to download the Sponsorship PDF
+              </a>
+            </div>
+          </iframe>
+        </div>
+      </div>
+    </motion.div>
+  </div>
+
+          {/* Full Screen PDF Modal Overlay */}
+          {isModalOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 md:p-8"
+              onClick={() => setIsModalOpen(false)}
+            >
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="relative bg-white rounded-2xl shadow-2xl w-full max-w-5xl h-[90vh] flex flex-col overflow-hidden"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Modal Header */}
+                <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-purple-900 to-purple-800 text-white shrink-0">
+                  <div className="flex items-center gap-3">
+                    <FileText className="w-5 h-5" />
+                    <h3 className="text-lg font-bold">
+                      CM DAYS 2026 - Sponsorship Brochure
+                    </h3>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <a
+                      href="/Sponsorship-CMDAYS-2026.pdf"
+                      download="Sponsorship-CMDAYS-2026.pdf"
+                      className="inline-flex items-center gap-2 px-4 py-1.5 rounded-lg bg-white/20 hover:bg-white/30 text-white text-sm font-semibold transition-colors"
+                    >
+                      <Download className="w-4 h-4" />
+                      Download
+                    </a>
+                    <button
+                      onClick={() => setIsModalOpen(false)}
+                      className="p-1.5 rounded-full hover:bg-white/20 text-white transition-colors"
+                      aria-label="Close modal"
+                    >
+                      <X className="w-6 h-6" />
+                    </button>
                   </div>
                 </div>
-                
-              </div>
-            </div>
-          </motion.div>
+
+                {/* PDF Full Frame */}
+                <div className="flex-1 overflow-hidden bg-slate-100">
+                  <iframe
+                    src="/Sponsorship-CMDAYS-2026.pdf"
+                    className="w-full h-full"
+                    title="Sponsorship Brochure PDF Full Screen"
+                    style={{ border: "none" }}
+                  />
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
        
 
   
