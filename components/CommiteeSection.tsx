@@ -156,13 +156,12 @@ export default function CommitteeSection({
 
       {/* Committee Members Grid */}
       {/* Chief Patron */}
-      {/* Chief Patron */}
       {chiefPatron && (
         <div className="mb-16 flex flex-col items-center">
           <div className="flex items-center gap-3 mb-8">
             <div className="h-[2px] w-16 bg-gradient-to-r from-transparent to-purple-800"></div>
             <h3 className="text-3xl md:text-4xl font-extrabold text-purple-900 uppercase tracking-[0.2em]">
-              Chief Patron
+              Patron
             </h3>
             <div className="h-[2px] w-16 bg-gradient-to-l from-transparent to-purple-800"></div>
           </div>
