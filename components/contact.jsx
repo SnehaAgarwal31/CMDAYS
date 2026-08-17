@@ -138,6 +138,7 @@ export default function Contact() {
                     <Phone className="w-5 h-5 text-purple-200 mt-1" />
                     <div className="flex flex-col">
                       <span className="text-white font-medium">Dr. Suryanarayan Dash <span className="text-purple-200 text-sm font-normal">(Convener)</span></span>
+                      <a href="tel:+919337142084" className="text-purple-100 hover:text-white transition-colors">+91-9337142084</a>
                       <a href="tel:+919438741397" className="text-purple-100 hover:text-white transition-colors">+91-9438741397</a>
                     </div>
                   </div>
