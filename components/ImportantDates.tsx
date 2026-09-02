@@ -12,7 +12,7 @@ const IMPORTANT_DATES = [
   {
     id: 2,
     title: "Abstract Submission Ends",
-    date: new Date("2026-08-31"),
+    date: new Date("2026-09-04"),
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const IMPORTANT_DATES = [
     title: "Registration Begins",
     date: new Date("2026-09-10"),
   },
-   {
+  {
     id: 5,
     title: "Registration Ends",
     date: new Date("2026-09-20"),
@@ -169,26 +169,26 @@ export default function ImportantDatesSlider() {
                   <h3 className="text-base font-semibold bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text text-transparent pr-2 leading-tight">
                     {item.title}
                   </h3>
-                    {(() => {
-                      let effectiveDate = item.date;
+                  {(() => {
+                    let effectiveDate = item.date;
 
-                      // If deadline passed and it's the submission end → use extended date
-                      if (
-                        isDeadlinePassed &&
-                        item.title === "Paper Submission Ends"
-                      ) {
-                        effectiveDate = new Date("2026-04-10T23:59:59+05:30");
-                      }
+                    // If deadline passed and it's the submission end → use extended date
+                    if (
+                      isDeadlinePassed &&
+                      item.title === "Paper Submission Ends"
+                    ) {
+                      effectiveDate = new Date("2026-04-10T23:59:59+05:30");
+                    }
 
-                      return (
-                        <span
-                          className={`text-xs px-3 py-1.5 rounded-full text-white font-bold shadow-md ${getStatusColor(effectiveDate)} whitespace-nowrap`}
-                        >
-                          {getDaysRemaining(effectiveDate)}
-                        </span>
-                      );
-                    })()}
-                  
+                    return (
+                      <span
+                        className={`text-xs px-3 py-1.5 rounded-full text-white font-bold shadow-md ${getStatusColor(effectiveDate)} whitespace-nowrap`}
+                      >
+                        {getDaysRemaining(effectiveDate)}
+                      </span>
+                    );
+                  })()}
+
                 </div>
 
                 <div className="flex items-center gap-2">
@@ -231,7 +231,7 @@ export default function ImportantDatesSlider() {
                             </>
                           );
                         }
-                        else if(item.title==="Notification of Acceptance"){
+                        else if (item.title === "Notification of Acceptance") {
                           return (
                             <>
                               <span className="line-through text-red-500 mr-2">
